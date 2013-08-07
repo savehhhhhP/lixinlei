@@ -39,11 +39,12 @@ public class Edit2Activity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit);
-		Intent  intent =getIntent();
+        
+		Intent intent =getIntent();
 		replacePosition=intent.getIntExtra("position", 0);
-		Log.i("sjl", "替换界面  得到的replacePosition:"+replacePosition);
+		Log.i("lxl", "替换界面  得到的replacePosition:"+replacePosition);
 		parent=intent.getStringExtra("parent");
-		Log.i("sjl", "替换界面  得到的parent id is:"+parent);
+		Log.i("lxl", "替换界面  得到的parent id is:"+parent);
 		init();
 	}
 	@Override
@@ -122,7 +123,7 @@ public class Edit2Activity extends Activity {
 			myDbHelper.insertIntoCard_tree(_id, parent, replacePosition);
 //			根据前一个页面传递过来的   position parent 创建纪录
 			setResult(resultCode, data);
-			Log.i("sjl", "正在更新数据库 返回2*8页面");
+			Log.i("lxl", "正在更新数据库 返回2*8页面");
 			finish();
 	    }
 	}
