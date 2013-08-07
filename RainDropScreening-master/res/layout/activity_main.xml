@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.raindrop.customview.NavigationBar
+            android:id="@+id/navigationBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" >
+        </com.raindrop.customview.NavigationBar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/displayLL" 
+        >
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:max="8"
+            android:minHeight="5dp"
+            android:progress="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:orientation="vertical" 
+            android:id="@+id/displayPartLL">
+
+            <ImageView
+                android:id="@+id/questionIv"
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_weight="1" 
+                android:visibility="invisible"/>
+           <TextView
+                android:id="@+id/questionTv"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_marginLeft="5dp"
+                android:inputType="textMultiLine"
+                android:layout_weight="2"
+                android:text="1.你的孩子曾用食指指着东西，要求要某样东西吗？" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+        <ImageButton
+            android:id="@+id/imageBtnYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="56dp"
+            android:background="@drawable/yes1"
+            android:src="@drawable/yes" />
+
+        <ImageButton
+            android:id="@+id/imageBtnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/imageBtnYes"
+            android:layout_marginRight="56dp"
+            android:background="@drawable/no"
+            android:src="@drawable/no" />
+
+    </RelativeLayout>
+
+</LinearLayout>

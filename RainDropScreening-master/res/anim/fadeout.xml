@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- add by sjl 20130605 辅助实现列表到详情页面的淡入淡出效果-->
+<!-- <translate xmlns:android="http://schemas.android.com/apk/res/android" -->
+<!--        android:interpolator="@android:anim/accelerate_interpolator" -->
+<!--        android:fromXDelta="0" android:toXDelta="0" -->
+<!--        android:duration="2000" /> -->
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+       android:interpolator="@android:anim/accelerate_interpolator"
+       android:fromAlpha="1.0" android:toAlpha="0.0"
+       android:duration="500" />

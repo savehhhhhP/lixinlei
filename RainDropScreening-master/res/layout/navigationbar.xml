@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageButton
+        android:id="@+id/rightBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/operation1"
+        android:src="@drawable/operation"
+         />
+
+    <Button
+        android:id="@+id/leftBtn"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="5dp"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/back"
+        android:text="返回" />
+
+    <TextView
+        android:id="@+id/titleTv"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/leftBtn"
+        android:layout_alignBottom="@+id/leftBtn"
+        android:layout_centerHorizontal="true"
+        android:text="This is title" />
+
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questionType1">  
+        <item >题库A正在搜集中，敬请期待..</item>  
+        </string-array> 
+    
+    <string-array name="questionType2">  
+        <item >1.你的孩子喜欢你摇他或是把他放在你的膝盖上等等之类的事吗？</item>  
+       <item >2.你的孩子对其他孩子有兴趣吗？</item>  
+        <item >3.你的孩子喜欢爬东西，像上楼梯吗？</item>  
+        <item >4.你的孩子喜欢玩捉迷藏吗？</item>  
+        <item >5.你的孩子会假装，例如，讲电话或照顾洋娃娃，或假装其他事情吗？</item>  
+      <item >6.你的孩子曾用食指指着东西，要求要某样东西吗？</item>
+      <item >7.你的孩子曾用食指指着东西，表示对某样东西有兴趣吗？</item>
+      <item >8.你的孩子会正确玩小玩具（例如车子或积木），而不是只把它放在嘴里，随便乱动或是把它们丢掉？</item>
+      <item >9.你的孩子曾经拿东西给你(家长)看吗？</item>  
+      <item >10.你的孩子会注意看着你的眼睛超过一，两秒钟吗？</item>
+      <item >11.你的孩子曾对声音过分敏感吗？(例如捂住耳朵)</item>
+      <item >12.你的孩子看着你的脸或是你的微笑时会以微笑回应吗？</item>
+      <item >13.你的孩子会模仿你吗?(例如：你扮个鬼脸，你的孩子会模仿吗 ？)</item>  
+      <item >14.你的孩子听到别人叫他/她的名字时，他/她会回应吗？</item>
+      <item >15.如果你指着房间另一头的玩具，你的孩子会看那个玩具吗？</item>
+      <item >16.你的孩子走路吗？</item>
+      <item >17.你的孩子会看你正在看的东西吗？</item>  
+      <item >18.你的孩子会在他/她的脸附近做出一些不寻常的手指头动作吗？</item>
+      <item >19.你的孩子会设法吸引你看他/她自己的活动吗？</item> 
+       <item >20.你是否曾经怀疑你的孩子听力有问题？</item>
+      <item >21.你的孩子能理解别人说的话吗？</item> 
+       <item >22.你的孩子有时候会两眼失焦或是没有目的地逛来逛去吗？</item>
+      <item >23.你的孩子碰到不熟悉的事物时会看着你的脸，看看你的反应吗？</item> 
+        </string-array> 
+          <string-array name="questionType3">  
+      <item >题库C正在搜集中，敬请期待..</item>  
+        </string-array> 
+        
+     <string-array name="answers">  
+	      <item >1</item>  
+	      <item >1</item>
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>  
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>  
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>  
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item>
+	      <item >0</item> 
+	      <item >1</item>  
+	      <item >0</item>
+	      <item >1</item>
+	      <item >0</item>
+	      <item >0</item>  
+	      <item >0</item>
+     </string-array> 
+  <string-array name="terminal">  
+        <item >android</item>  
+       <item >web</item>  
+        <item >ios</item> 
+    </string-array> 
+      <string-array name="gender">  
+        <item >male</item>  
+       <item >female</item>  
+    </string-array> 
+      <string-array name="age">  
+        <item >&gt;16</item>  
+       <item >16to30 </item>  
+        <item >&lt;30 </item> 
+    </string-array> 
+    <string-array name="relation">  
+        <item >父母</item>  
+       <item >亲戚</item>  
+        <item >老师 </item> 
+    </string-array> 
+    <string-array name="operations">  
+        <item >重新开始</item>  
+       <item >用户反馈</item>  
+        <item >退出</item>  
+    </string-array> 
+</resources>

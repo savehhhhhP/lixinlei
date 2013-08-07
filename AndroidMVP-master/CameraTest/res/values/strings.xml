@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CameraTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_first">小雨滴家长版</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_edit_card">EditCardActivity</string>
+    <string name="title_activity_edit2">Edit2Activity</string>
+    <string name="title_activity_child">ChildActivity</string>
+
+</resources>

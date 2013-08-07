@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">小雨滴筛查表</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="activity_title">Autism Screening</string>
+    <string name="question1">1.你的孩子喜欢你摇他或是把他放在你的膝盖上等等之类的事吗？</string>
+    <string name="question2">2.你的孩子对其他孩子有兴趣吗？</string>
+    <string name="question3">3.你的孩子喜欢爬东西，像上楼梯吗？</string>
+    <string name="question4">4.你的孩子喜欢玩捉迷藏吗？</string>
+    <string name="question5">5.你的孩子会假装，例如，讲电话或照顾洋娃娃，或假装其他事情吗？</string>
+    <string name="question6">6.你的孩子曾用食指指着东西，要求要某样东西吗？</string>
+    <string name="question7">7.你的孩子曾用食指指着东西，表示对某样东西有兴趣吗？</string>
+    <string name="question8">8.你的孩子会正确玩小玩具（例如车子或积木），而不是只把它放在嘴里，随便乱动或是把它们丢掉？</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_introduction">Introduction</string>
+    <string name="help_content">Introduction</string>
+    <string name="introduction_content">2004年北京市针对2—6岁的普查情况，发病率为0.134%，按这个比例全国有180万自闭症儿童。按美国2012年的最新研究报告称1/88儿童受自</string>
+</resources>
