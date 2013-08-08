@@ -1,14 +1,8 @@
 package com.example.cameratest;
 
-import java.io.IOException;
-
 import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
@@ -24,7 +18,7 @@ import com.example.util.Constants;
 import com.example.util.DataBaseHelper;
 import com.umeng.analytics.MobclickAgent;
 
-public class Edit2Activity extends Activity {
+public class CoverCardActivity extends Activity {
 
 	NavigationBar nb;
 	ListView lv; 
@@ -78,13 +72,13 @@ public class Edit2Activity extends Activity {
 		nb=(NavigationBar)findViewById(R.id.nb_edit);
 		lv=(ListView)findViewById(R.id.listView);
 		catLv=(ListView)findViewById(R.id.listView2);
-		myDbHelper = DataBaseHelper.getDataBaseHelper(Edit2Activity.this);
+		myDbHelper = DataBaseHelper.getDataBaseHelper(CoverCardActivity.this);
 		datasource4card=myDbHelper.getDataSource(Constants.TYPE_CARD);
-		SimpleCursorAdapter adapter4card=new SimpleCursorAdapter(Edit2Activity.this, R.layout.listitem, datasource4card, new String[]{"name"},new int[]{R.id.listitem});
+		SimpleCursorAdapter adapter4card=new SimpleCursorAdapter(CoverCardActivity.this, R.layout.listitem, datasource4card, new String[]{"name"},new int[]{R.id.listitem});
 		lv.setAdapter(adapter4card);
 		
 		datasource4cato=myDbHelper.getDataSource(Constants.TYPE_CATEGORY);
-		SimpleCursorAdapter adapter4cato=new SimpleCursorAdapter(Edit2Activity.this, R.layout.listitem, datasource4cato, new String[]{"name"},new int[]{R.id.listitem});
+		SimpleCursorAdapter adapter4cato=new SimpleCursorAdapter(CoverCardActivity.this, R.layout.listitem, datasource4cato, new String[]{"name"},new int[]{R.id.listitem});
 		catLv.setAdapter(adapter4cato);
 		
 		lv.setOnItemClickListener(new OnItemClickListener() {

@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -194,7 +193,7 @@ public class FirstActivity extends Activity {
 		for(int i=0;i<ivList.size();i++){
 			intent =new Intent();
 			intent.putExtra("position", i);
-			intent.setClass(FirstActivity.this, Edit2Activity.class);
+			intent.setClass(FirstActivity.this, CoverCardActivity.class);
 			intent.putExtra("parent", parent);
 			if(!isLauchPage&&i==0){                                  //lxl 是目录则不做任何事，不是目录则添加长按响应
 //				do nothing
@@ -320,7 +319,7 @@ public class FirstActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						Intent intent=new  Intent();
-						intent.setClass(FirstActivity.this, MainActivity.class);
+						intent.setClass(FirstActivity.this, CreatCardActivity.class);
 						switch(which){
 						case 0:
 							intent.putExtra("type", Constants.TYPE_CARD);

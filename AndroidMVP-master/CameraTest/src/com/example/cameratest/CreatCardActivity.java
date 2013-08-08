@@ -5,19 +5,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaRecorder;
@@ -42,7 +40,7 @@ import com.example.util.GlobalUtil;
 import com.example.util.ListenerUtil;
 import com.umeng.analytics.MobclickAgent;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class CreatCardActivity extends Activity implements OnClickListener {
     private ImageView preview;
     private Button saveBtn;
     private Button recordBtn;
@@ -56,8 +54,11 @@ public class MainActivity extends Activity implements OnClickListener {
     public boolean isRecording = false;
     String returnString;
     DataBaseHelper dataBaseHelper;                                                              //数据库
+    private static final int REQUEST_ALBUM = 0;
     private static final int REQUEST_CAMERA = 1;
     private static final int REQUEST_CALENDAR = 2;
+    private static final int REQUEST_CAMERA_CROP = 3;
+    private static final int REQUEST_ALBUM_CROP = 4;
 //  存放语音文件的路径
 //  这用于标示  当前记录数有多少
     int yyItemIndex;
@@ -78,7 +79,7 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dataBaseHelper = DataBaseHelper.getDataBaseHelper(MainActivity.this);
+        dataBaseHelper = DataBaseHelper.getDataBaseHelper(CreatCardActivity.this);
         Intent intent = getIntent();
 
         cardType = intent.getStringExtra("type");                                       //lxl 获得类型
@@ -119,14 +120,14 @@ public class MainActivity extends Activity implements OnClickListener {
         nb.setBtnRightClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "功能开发中..", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreatCardActivity.this, "功能开发中..", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void initSpinner() {
         Cursor datasource = dataBaseHelper.getCardTypes();
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this, R.layout.listitem, datasource, new String[]{"name"}, new int[]{R.id.listitem});
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(CreatCardActivity.this, R.layout.listitem, datasource, new String[]{"name"}, new int[]{R.id.listitem});
         catogerySP.setAdapter(adapter);
         catogerySP.setOnItemSelectedListener(new ListenerUtil.SpinnerSelectedListener(datasource));
     }
@@ -157,7 +158,7 @@ public class MainActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 playBtn.setEnabled(false);
-                MediaPlayer mp = MediaPlayer.create(MainActivity.this, Uri.fromFile(file));
+                MediaPlayer mp = MediaPlayer.create(CreatCardActivity.this, Uri.fromFile(file));
                 if (mp != null) {
                     mp.start();
                     mp.setOnCompletionListener(new OnCompletionListener() {
@@ -190,7 +191,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 stopBtn.setEnabled(false);
                 recordBtn.setEnabled(true);
                 clearBtn.setEnabled(false);
-                Toast.makeText(MainActivity.this, "已删除", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreatCardActivity.this, "已删除", Toast.LENGTH_LONG).show();
             }
         });
         saveBtn.setOnClickListener(new OnClickListener() {
@@ -203,8 +204,6 @@ public class MainActivity extends Activity implements OnClickListener {
                         mMediaRecorder.release();
                         mMediaRecorder = null;
                     }
-
-
                     String name = cardnameET.getText().toString();
 //					UUID 生成 
                     String image = GlobalUtil.getId();
@@ -219,18 +218,16 @@ public class MainActivity extends Activity implements OnClickListener {
                     HashMap<String, String> info = new HashMap<String, String>();
                     info.put("name", name);
                     info.put("type", cardType);
-                    MobclickAgent.onEvent(MainActivity.this, "newevent", info);
+                    MobclickAgent.onEvent(CreatCardActivity.this, "newevent", info);
                     Log.i("lxl", "数据已经传送友盟");
 //					end 
                     SharedPreferences sp = getSharedPreferences("xiaoyudi", 0);
                     sp.edit().putInt("yyItemIndex", ++yyItemIndex).putInt("picItemIndex", ++picItemIndex).commit();
-                    Toast.makeText(MainActivity.this, "保存 成功", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatCardActivity.this, "保存 成功", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "请上传图片", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatCardActivity.this, "请上传图片", Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
         recordBtn.setOnClickListener(new OnClickListener() {
@@ -272,68 +269,59 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
 
         ContentResolver resolver = getContentResolver();
-        /**
-         * 因为两种方式都用到了startActivityForResult方法， 
-         * 这个方法执行完后都会执行onActivityResult方法， 所以为了区别到底选择了那个方式获取图片要进行判断， 
-         * 这里的requestCode跟startActivityForResult里面第二个参数对应 
-         */
-        if (requestCode == 0) {
+        if (requestCode == REQUEST_ALBUM) {                                  //选择照片事件返回
+            if (data != null) {
+                Uri originalUri = data.getData();
+                if (originalUri != null) {
+                    performCrop(originalUri,tempFileUri, REQUEST_ALBUM_CROP);
+                }
+                imageflag = true;
+            }
+        } else if (requestCode == REQUEST_CAMERA) {                         //照相事件返回
             try {
+                super.onActivityResult(requestCode, resultCode, data);
+                if (resultCode == RESULT_OK) {                              //点击了OK，说明需要设置选择的照片
+                    Log.i("lxl", "照相完成。");
+                    performCrop(tempFileUri,tempFileUri,REQUEST_CAMERA_CROP);
+                    return;
+                }
+            } catch (Exception e) {
+                Toast.makeText(this,"裁剪错误",Toast.LENGTH_LONG);
+            }
+        }else if (requestCode == REQUEST_CAMERA_CROP) {                      //先做照相，之后裁剪，之后返回
+            if (resultCode == RESULT_OK){
+                preview.setImageURI(Uri.fromFile(new File(Constants.dir_path_pic + imageName)));
+                tempFileUri = null;
+                imageflag = true;
+            }
+        }else if(requestCode == REQUEST_ALBUM_CROP){                         //先做相册照片选择，之后裁剪，之后返回
+            if (resultCode == RESULT_OK) {
                 if (data != null) {
-                    Uri originalUri = data.getData();
-                    if (originalUri != null) {
-                        Log.i("lxl", "uri is not null");
-                        preview.setImageURI(originalUri);
+                    try {
+                        //Uri originalUri = data.getData();
+                        Log.i("lxl","data不为空");
+                        preview.setImageURI(tempFileUri);
                         // 将图片内容解析成字节数组
-                        mContent = readStream(resolver.openInputStream(Uri.parse(originalUri.toString())));
+                        mContent = readStream(resolver.openInputStream(Uri.parse(tempFileUri.toString())));
                         // 将字节数组转换为ImageView可调用的Bitmap对象
                         myBitmap = getPicFromBytes(mContent, null);
                         File f = new File(Constants.dir_path_pic + imageName);
-                        Log.i("lxl", "1");
+                        Log.i("lxl",Constants.dir_path_pic + imageName);
                         f.createNewFile();
                         FileOutputStream fOut = null;
                         try {
                             fOut = new FileOutputStream(f);
-                            Log.i("lxl", "2");
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
                         myBitmap.compress(Bitmap.CompressFormat.JPEG, 30, fOut);
                         myBitmap.recycle();
                         fOut.close();
-                        fOut = null;
-                        f = null;
-
-
+                    } catch (Exception e) {
+                        Toast.makeText(this,"设置裁剪后图片错误",Toast.LENGTH_LONG);
                     }
-                    imageflag = true;
                 }
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
             }
-
-        } else if (requestCode == REQUEST_CAMERA) {
-            try {
-//            	这是照片方法
-                super.onActivityResult(requestCode, resultCode, data);
-                if (resultCode == RESULT_OK) {                 //点击了OK，说明需要设置选择的照片
-                    Log.i("lxl", "data is RESULT_OK");
-                    preview.setImageURI(Uri.fromFile(new File(Constants.dir_path_pic + imageName)));
-                    imageflag = true;
-                    return;
-                }
-//                Bundle extras = data.getExtras();
-//                myBitmap = (Bitmap) extras.get("data");  
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();  
-//                myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);  
-//                mContent = baos.toByteArray();  
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            // 把得到的图片绑定在控件上显示  
-//            preview.setImageBitmap(myBitmap);
-//            preview.setImageBitmap(ImageUtil.toRoundCorner(myBitmap, 10));//把拍摄的照片转成圆角显示在预览控件上  
         } else if (requestCode == REQUEST_CALENDAR) {
             if (resultCode == RESULT_OK) {
 //                happenDate.setCalendar(data.getIntExtra("year", 1900), data.getIntExtra("month", 0), data.getIntExtra("day", 1));  
@@ -363,9 +351,32 @@ public class MainActivity extends Activity implements OnClickListener {
         return data;
     }
 
-    String imageName;
-
     //begin 2013.8.7 照相功能增加corp image操作 lxl
+    String imageName;
+    Uri tempFileUri;                      //拍照后照片的Uri
+
+    /**
+     * 裁剪图片
+     */
+    public void performCrop(Uri uri,Uri output,int request) {
+        try {
+            Intent intent = new Intent("com.android.camera.action.CROP");
+            Log.i("lxl","载入裁剪");
+            intent.setDataAndType(uri, "image/*");//设置要裁剪的图片
+            Log.i("lxl", "载入图片");
+            intent.putExtra("crop", "true");// crop=true 有这句才能出来最后的裁剪页面.
+            intent.putExtra("aspectX", 4);// 这两项为裁剪框的比例.
+            intent.putExtra("aspectY", 5);// x:y=1:1
+            intent.putExtra("output", output);//保存到ouotput
+            intent.putExtra("outputFormat", "JPEG");// 返回格式
+            startActivityForResult(intent, request);
+        } catch (ActivityNotFoundException anfe) {
+            String errorMessage = "Whoops - your device doesn't support the crop action!";
+            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -373,29 +384,26 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.uploadIV: {
                 final CharSequence[] items =
                         {"相册", "拍照"};
-                AlertDialog dlg = new AlertDialog.Builder(MainActivity.this).setTitle("选择图片").setItems(items,
+                AlertDialog dlg = new AlertDialog.Builder(CreatCardActivity.this).setTitle("选择图片").setItems(items,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int item) {
                                 imageName = picItemIndex + ".jpg";
                                 if (item == 1) {                                        //拍照
-//                                  Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");  
-//                                  startActivityForResult(getImageByCamera, REQUEST_CAMERA); 
 //                                	以下  以指定路径的方式 保存图片 lxl 2013 07 23 
                                     File sdcardTempFile = new File(Constants.dir_path_pic, imageName);
                                     Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                                    Uri u = Uri.fromFile(sdcardTempFile);
+                                    tempFileUri = Uri.fromFile(sdcardTempFile);
                                     intent.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
-                                    intent.putExtra(MediaStore.EXTRA_OUTPUT, u);
+                                    intent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileUri);
                                     intent.putExtra("return-data", true);
                                     startActivityForResult(intent, REQUEST_CAMERA);
-                                    sdcardTempFile = null;
-                                    u = null;
-
                                 } else {                                               //相册选择
+                                    File sdcardTempFile = new File(Constants.dir_path_pic, imageName);
+                                    tempFileUri = Uri.fromFile(sdcardTempFile);
                                     Intent getImage = new Intent(Intent.ACTION_GET_CONTENT);
                                     getImage.addCategory(Intent.CATEGORY_OPENABLE);
                                     getImage.setType("image/jpeg");
-                                    startActivityForResult(getImage, 0);
+                                    startActivityForResult(getImage, REQUEST_ALBUM);
                                 }
                             }
                         }).create();
