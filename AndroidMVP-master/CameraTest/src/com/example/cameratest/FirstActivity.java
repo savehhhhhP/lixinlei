@@ -282,7 +282,7 @@ public class FirstActivity extends Activity {
 //		    	Uri uri=Uri.fromFile(picFile);
 //				ivList.get(position).setImageURI(uri);
 				Bitmap mybitmap=GlobalUtil.preHandleImage(ivList.get(position),Constants.dir_path_pic+filename);
-				mybitmap=GlobalUtil.small(mybitmap);                        //lxl对选择的图片进行缩放之后放到所选择的要替换的图片（position）上
+				mybitmap=GlobalUtil.small(mybitmap);                        //lxl对选择的图片进行缩放之后放到所选择的要替换的图片（）上
 				Log.i("lxl", "缩放了...");
 				ivList.get(position).setImageBitmap(mybitmap);
 				mybitmap.recycle();
@@ -290,14 +290,14 @@ public class FirstActivity extends Activity {
 				
 //				end
 				Log.i("lxl", "正在渲染图片.."+position);
-				if(type.equals(Constants.TYPE_CATEGORY)){                                            //判断目录与非目录  载入不同的背景相框
+				if(type.equals(Constants.TYPE_CATEGORY)){
 					ivList.get(position).setBackgroundResource(R.drawable.ic_category);
 				}else{
 					ivList.get(position).setBackgroundResource(R.drawable.ic_card);
 				}
 //				picFile=null;
 //				uri=null;
-				tvList.get(position).setText(name);                                                  //设置替换的文字
+				tvList.get(position).setText(name);
 				Log.i("lxl", "长按添加  返回到原页面   正在渲染 图片cardname:"+name);
 			}
 		}
