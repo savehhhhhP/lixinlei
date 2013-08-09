@@ -81,13 +81,11 @@ public class CreatCardActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         dataBaseHelper = DataBaseHelper.getDataBaseHelper(CreatCardActivity.this);
         Intent intent = getIntent();
-
         cardType = intent.getStringExtra("type");                                       //lxl 获得类型
         Log.i("lxl", "cardType is " + cardType);
         setContentView(R.layout.activity_camera2);
         preview = (ImageView) findViewById(R.id.uploadIV);
         preview.setOnClickListener(this);
-
 //        配置友盟发送数据的机制  在线同步策略
         MobclickAgent.updateOnlineConfig(this);
         initUI();
@@ -133,9 +131,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
     }
 
     public void initUI() {
-
         initNavigation();
-
         saveBtn = (Button) findViewById(R.id.saveBtn);
         recordBtn = (Button) findViewById(R.id.recordBtn);
         playBtn = (Button) findViewById(R.id.playBtn);
@@ -153,7 +149,6 @@ public class CreatCardActivity extends Activity implements OnClickListener {
         } else {
             ll.setVisibility(View.GONE);
         }
-
         playBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -299,14 +294,14 @@ public class CreatCardActivity extends Activity implements OnClickListener {
                 if (data != null) {
                     try {
                         //Uri originalUri = data.getData();
-                        Log.i("lxl","data不为空");
+                        Log.i("_ALBUM_CROP","data不为空");
                         preview.setImageURI(tempFileUri);
                         // 将图片内容解析成字节数组
                         mContent = readStream(resolver.openInputStream(Uri.parse(tempFileUri.toString())));
                         // 将字节数组转换为ImageView可调用的Bitmap对象
                         myBitmap = getPicFromBytes(mContent, null);
                         File f = new File(Constants.dir_path_pic + imageName);
-                        Log.i("lxl",Constants.dir_path_pic + imageName);
+                        Log.i("_ALBUM_CROP",Constants.dir_path_pic + imageName);
                         f.createNewFile();
                         FileOutputStream fOut = null;
                         try {
@@ -361,9 +356,9 @@ public class CreatCardActivity extends Activity implements OnClickListener {
     public void performCrop(Uri uri,Uri output,int request) {
         try {
             Intent intent = new Intent("com.android.camera.action.CROP");
-            Log.i("lxl","载入裁剪");
+            Log.i("corp image","载入裁剪");
             intent.setDataAndType(uri, "image/*");//设置要裁剪的图片
-            Log.i("lxl", "载入图片");
+            Log.i("corp image", "载入图片");
             intent.putExtra("crop", "true");// crop=true 有这句才能出来最后的裁剪页面.
             intent.putExtra("aspectX", 4);// 这两项为裁剪框的比例.
             intent.putExtra("aspectY", 5);// x:y=1:1
