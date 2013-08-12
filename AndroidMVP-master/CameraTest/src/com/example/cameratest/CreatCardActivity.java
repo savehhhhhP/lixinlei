@@ -1,5 +1,5 @@
 package com.example.cameratest;
-  
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,7 +59,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
     private static final int REQUEST_CALENDAR = 2;
     private static final int REQUEST_CAMERA_CROP = 3;
     private static final int REQUEST_ALBUM_CROP = 4;
-//  存放语音文件的路径
+    //  存放语音文件的路径
 //  这用于标示  当前记录数有多少
     int yyItemIndex;
     int picItemIndex;
@@ -234,7 +234,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
                         .show(); 
                      /* 创建录音文件，第一个参数是文件名前缀，第二个参数是后缀，第三个参数是SD路径 */
                 try {
-					 /* 实例化MediaRecorder对象 */
+                     /* 实例化MediaRecorder对象 */
                     mMediaRecorder = new MediaRecorder();
 					 /* 设置麦克风 */
                     mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -268,7 +268,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
             if (data != null) {
                 Uri originalUri = data.getData();
                 if (originalUri != null) {
-                    performCrop(originalUri,tempFileUri, REQUEST_ALBUM_CROP);
+                    performCrop(originalUri, tempFileUri, REQUEST_ALBUM_CROP);
                 }
                 imageflag = true;
             }
@@ -277,31 +277,31 @@ public class CreatCardActivity extends Activity implements OnClickListener {
                 super.onActivityResult(requestCode, resultCode, data);
                 if (resultCode == RESULT_OK) {                              //点击了OK，说明需要设置选择的照片
                     Log.i("lxl", "照相完成。");
-                    performCrop(tempFileUri,tempFileUri,REQUEST_CAMERA_CROP);
+                    performCrop(tempFileUri, tempFileUri, REQUEST_CAMERA_CROP);
                     return;
                 }
             } catch (Exception e) {
-                Toast.makeText(this,"裁剪错误",Toast.LENGTH_LONG);
+                Toast.makeText(this, "裁剪错误", Toast.LENGTH_LONG);
             }
-        }else if (requestCode == REQUEST_CAMERA_CROP) {                      //先做照相，之后裁剪，之后返回
-            if (resultCode == RESULT_OK){
+        } else if (requestCode == REQUEST_CAMERA_CROP) {                      //先做照相，之后裁剪，之后返回
+            if (resultCode == RESULT_OK) {
                 preview.setImageURI(Uri.fromFile(new File(Constants.dir_path_pic + imageName)));
                 tempFileUri = null;
                 imageflag = true;
             }
-        }else if(requestCode == REQUEST_ALBUM_CROP){                         //先做相册照片选择，之后裁剪，之后返回
+        } else if (requestCode == REQUEST_ALBUM_CROP) {                         //先做相册照片选择，之后裁剪，之后返回
             if (resultCode == RESULT_OK) {
                 if (data != null) {
                     try {
                         //Uri originalUri = data.getData();
-                        Log.i("_ALBUM_CROP","data不为空");
+                        Log.i("_ALBUM_CROP", "data不为空");
                         preview.setImageURI(tempFileUri);
                         // 将图片内容解析成字节数组
                         mContent = readStream(resolver.openInputStream(Uri.parse(tempFileUri.toString())));
                         // 将字节数组转换为ImageView可调用的Bitmap对象
                         myBitmap = getPicFromBytes(mContent, null);
                         File f = new File(Constants.dir_path_pic + imageName);
-                        Log.i("_ALBUM_CROP",Constants.dir_path_pic + imageName);
+                        Log.i("_ALBUM_CROP", Constants.dir_path_pic + imageName);
                         f.createNewFile();
                         FileOutputStream fOut = null;
                         try {
@@ -313,7 +313,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
                         myBitmap.recycle();
                         fOut.close();
                     } catch (Exception e) {
-                        Toast.makeText(this,"设置裁剪后图片错误",Toast.LENGTH_LONG);
+                        Toast.makeText(this, "设置裁剪后图片错误", Toast.LENGTH_LONG);
                     }
                 }
             }
@@ -353,10 +353,10 @@ public class CreatCardActivity extends Activity implements OnClickListener {
     /**
      * 裁剪图片
      */
-    public void performCrop(Uri uri,Uri output,int request) {
+    public void performCrop(Uri uri, Uri output, int request) {
         try {
             Intent intent = new Intent("com.android.camera.action.CROP");
-            Log.i("corp image","载入裁剪");
+            Log.i("corp image", "载入裁剪");
             intent.setDataAndType(uri, "image/*");//设置要裁剪的图片
             Log.i("corp image", "载入图片");
             intent.putExtra("crop", "true");// crop=true 有这句才能出来最后的裁剪页面.
@@ -409,6 +409,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
                 break;
         }
     }
+
     //end------------------------------------------------
     @Override
     protected void onResume() {

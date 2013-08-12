@@ -9,10 +9,12 @@
     <string name="umeng_xp_more">more</string>
     <string name="umeng_xp_back">Back</string>
     <string name="umeng_xp_title_info">Featured</string>
-    <string name="umeng_xp_dowload_dialog_dinfo">Download</string> 
-    <string name="umeng_xp_dowload_dialog_cinfo">Call</string> 
-    <string name="umeng_xp_dowloadOrNot">Download the app?</string>        
-    <string name="umeng_xp_failed_loading">Failed loading...</string>        
-    <string name="umeng_xp_tip_download_pre">Start download </string>        
-    <string name="umeng_xp_info_banner_deprecated">Banner style is not supported for current version of SDK, please contact us for support.</string>        
+    <string name="umeng_xp_dowload_dialog_dinfo">Download</string>
+    <string name="umeng_xp_dowload_dialog_cinfo">Call</string>
+    <string name="umeng_xp_dowloadOrNot">Download the app?</string>
+    <string name="umeng_xp_failed_loading">Failed loading...</string>
+    <string name="umeng_xp_tip_download_pre">Start download</string>
+    <string name="umeng_xp_info_banner_deprecated">Banner style is not supported for current version of SDK, please
+        contact us for support.
+    </string>
 </resources>

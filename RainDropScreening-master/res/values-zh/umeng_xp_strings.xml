@@ -15,7 +15,7 @@
     <string name="umeng_xp_dowload_dialog_cinfo">马上拨打</string>
     <string name="umeng_xp_failed_loading">加载失败...</string>
     <string name="umeng_xp_no_browser_tips">请先安装浏览器..</string>
-    <string name="umeng_xp_tip_download_pre">开始下载 </string>
+    <string name="umeng_xp_tip_download_pre">开始下载</string>
     <string name="umeng_xp_network_break_alert">请连接网络后再尝试！</string>
     <string name="umeng_xp_info_banner_deprecated">当前SDK版本不支持Banner样式,请联系客服.</string>
 

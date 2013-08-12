@@ -2,7 +2,7 @@
 <resources>
 
     <string name="umeng_fb_contact_info_hint">Email, msn, gtalk, or whatever we can find you.</string>
-    <string name="umeng_fb_contact_update_at">Updated at </string>
+    <string name="umeng_fb_contact_update_at">Updated at</string>
     <string name="umeng_fb_back">Back</string>
     <string name="umeng_fb_title">Feedback</string>
     <string name="umeng_fb_contact_title">Contact</string>
@@ -18,6 +18,8 @@
     <string name="umeng_fb_powered_by">Powered by</string>
     <string name="umeng_fb_notification_ticker_text">Got new reply</string>
     <string name="umeng_fb_notification_content_formatter_single_msg">New reply: %s</string>
-    <string name="umeng_fb_notification_content_formatter_multiple_msg">You received %d new replies from the app developer.</string>
+    <string name="umeng_fb_notification_content_formatter_multiple_msg">You received %d new replies from the app
+        developer.
+    </string>
 
 </resources>

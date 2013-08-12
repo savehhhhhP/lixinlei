@@ -12,30 +12,32 @@ import com.raindrop.customview.NavigationBar;
 
 public class IntroductionActivity extends Activity {
 
-	NavigationBar mynb;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_introduction);
-		init();
-	}
-	public void init(){
-		mynb=(NavigationBar)findViewById(R.id.introductionNb);
-		mynb.setBtnRightVisble(false);
-		mynb.setTvTitle("ΩÈ…‹3");
-		mynb.setBtnLeftClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				IntroductionActivity.this.finish();
-			}
-		});
-	}
+    NavigationBar mynb;
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_introduction, menu);
-		return true;
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_introduction);
+        init();
+    }
+
+    public void init() {
+        mynb = (NavigationBar) findViewById(R.id.introductionNb);
+        mynb.setBtnRightVisble(false);
+        mynb.setTvTitle("ΩÈ…‹3");
+        mynb.setBtnLeftClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                IntroductionActivity.this.finish();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_introduction, menu);
+        return true;
+    }
 
 }

@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.util.Log;
 
 import android.app.Activity;
+
 public class SystemExitBroadcastReceiver extends BroadcastReceiver {
-	@Override
-	public void onReceive(Context context, Intent arg1) {
-		Log.i("sjl", "监听到关闭操作");
-		((Activity)context).finish();
-	}
+    @Override
+    public void onReceive(Context context, Intent arg1) {
+        Log.i("sjl", "监听到关闭操作");
+        ((Activity) context).finish();
+    }
 
 }

@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.raindrop.screening"
-    android:versionCode="1"
-    android:versionName="1.0" >
+          package="com.raindrop.screening"
+          android:versionCode="1"
+          android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
+            android:minSdkVersion="8"
+            android:targetSdkVersion="16"/>
 
-    <uses-permission android:name="android.permission.INTERNET" >
+    <uses-permission android:name="android.permission.INTERNET">
     </uses-permission>
-<!--     以下是友盟统计插件需要的用户权限 20130627 -->
-<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+    <!--     以下是友盟统计插件需要的用户权限 20130627 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name="com.raindrop.application.MyApplication"
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.Light.NoTitleBar" >
-
-<!--         com.aphidmobile.flip.demo.FlipHorizontalLayoutActivity -->
-        <activity
-            android:name="com.raindrop.screening.MainActivity"
+            android:name="com.raindrop.application.MyApplication"
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-             >
+            android:theme="@android:style/Theme.Light.NoTitleBar">
+
+        <!--         com.aphidmobile.flip.demo.FlipHorizontalLayoutActivity -->
+        <activity
+                android:name="com.raindrop.screening.MainActivity"
+                android:label="@string/app_name"
+                >
         </activity>
         <!--     以下是友盟统计插件 20130627 -->
-<!--          <activity -->
-<!--             android:name="com.umeng.socialize.view.ShareActivity" -->
-<!--             android:configChanges="orientation|keyboard" -->
-<!--             android:launchMode="singleTask" -->
-<!--             android:noHistory="true" -->
-<!--             android:theme="@style/Theme.UMDialog" -->
-<!--             android:windowSoftInputMode="stateVisible|adjustResize" > -->
-<!--         </activity> -->
+        <!--          <activity -->
+        <!--             android:name="com.umeng.socialize.view.ShareActivity" -->
+        <!--             android:configChanges="orientation|keyboard" -->
+        <!--             android:launchMode="singleTask" -->
+        <!--             android:noHistory="true" -->
+        <!--             android:theme="@style/Theme.UMDialog" -->
+        <!--             android:windowSoftInputMode="stateVisible|adjustResize" > -->
+        <!--         </activity> -->
 
         <!-- ###################添加UmengAppkey###################### -->
         <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="51c7cd5056240bab31048abc" >
+                android:name="UMENG_APPKEY"
+                android:value="51c7cd5056240bab31048abc">
         </meta-data>
         <activity android:name="com.umeng.fb.ConversationActivity"/>
- <activity android:name="com.umeng.fb.ContactActivity"/>
+        <activity android:name="com.umeng.fb.ContactActivity"/>
 
         <activity
-            android:name="com.raindrop.screening.SplashActivity"
-            android:label="@string/title_activity_help" 
-            android:screenOrientation="portrait"
-            >
+                android:name="com.raindrop.screening.SplashActivity"
+                android:label="@string/title_activity_help"
+                android:screenOrientation="portrait"
+                >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name="com.raindrop.screening.IntroductionActivity"
-            android:label="@string/title_activity_introduction" >
+                android:name="com.raindrop.screening.IntroductionActivity"
+                android:label="@string/title_activity_introduction">
         </activity>
     </application>
 
