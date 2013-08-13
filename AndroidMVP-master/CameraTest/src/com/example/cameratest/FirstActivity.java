@@ -1,10 +1,8 @@
 package com.example.cameratest;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,6 +33,9 @@ import com.example.util.Constants;
 import com.example.util.DataBaseHelper;
 import com.example.util.GlobalUtil;
 import com.umeng.analytics.MobclickAgent;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class FirstActivity extends Activity {
 
@@ -119,7 +120,7 @@ public class FirstActivity extends Activity {
         }
     }
 
-    String[] images = new String[]{"p1_11.jpg", "p1_12.jpg", "p1_21.jpg", "p1_22.jpg", "p1_23.jpg", "p1_24.jpg", "p1_2.jpg"};
+    String[] images = new String[]{"p1_11.jpg", "p1_12.jpg", "p1_21.jpg", "p1_22.jpg", "p1_23.jpg", "p1_24.jpg", "selfcare.gif"};
     String[] audios = new String[]{"s1_11.mp3", "s1_12.mp3", "s1_21.mp3", "s1_22.mp3", "s1_23.mp3", "s1_24.mp3"};
 
     public void initCards() {
@@ -323,7 +324,7 @@ public class FirstActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new Builder(FirstActivity.this);
-                builder.setTitle("设置").setItems(new String[]{"卡片", "目录"}, new DialogInterface.OnClickListener() {
+                builder.setTitle("设置").setItems(new String[]{"卡片", "目录","同步数据"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
@@ -335,10 +336,19 @@ public class FirstActivity extends Activity {
                             case 1:
                                 intent.putExtra("type", Constants.TYPE_CATEGORY);
                                 break;
+                            case 2:
+                                //intent.putExtra("type",Constants.TYPE_SYN);
+                                //begin此处实现同步功能 2013 8 13
+                                Log.i("syn1","begin");
+                                goSyn();
+                                return;
+                                //end
                             default:
                                 break;
                         }
-                        startActivity(intent);
+                        if(which!=2){
+                            startActivity(intent);
+                        }
                     }
                 }).setNegativeButton("返回", new DialogInterface.OnClickListener() {
 
@@ -350,6 +360,64 @@ public class FirstActivity extends Activity {
             }
         });
     }
+
+    private void goSyn() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    String synData;
+                    synData = getJsonString("http://115.28.35.182/manifest/:username");
+                    Log.i("syn1",synData);
+                }catch(Exception e){
+                    Log.i("syn1",e.toString());
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 获取Json数据
+     * @param urlPath  路径
+     * @return Json数据
+     * @throws Exception
+     */
+    protected String getJsonString(String urlPath) throws Exception {
+        URL url = new URL(urlPath);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.connect();
+        InputStream inputStream = connection.getInputStream();
+        //对应的字符编码转换
+        Reader reader = new InputStreamReader(inputStream, "UTF-8");
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String str = null;
+        StringBuffer sb = new StringBuffer();
+        while ((str = bufferedReader.readLine()) != null) {
+            sb.append(str);
+        }
+        reader.close();
+        connection.disconnect();
+        return sb.toString();
+    }
+
+    /*
+     * Jason数据解析
+     * @param jsonStr Json数据
+     * @throws Exception
+     */
+    /*
+    public void jsonToObj(String jsonStr) throws Exception {
+        Page page;
+        page = new Page();
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String fatherName = jsonObject.getString("FatherName");
+        JSONArray childs= jsonObject.getJSONArray("Childs");
+        int length = childs.length();
+        for (int i = 0; i < length; i++) {
+            jsonObject = items.getJSONObject(i);
+            String childName = jsonObject.getString("Name");
+        }
+    }          */
 
 
     public void initNavigationBar2(String name) {                                       //对导航栏的初始化——按钮的设置，背景图片，名称

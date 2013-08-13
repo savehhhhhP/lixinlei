@@ -19,8 +19,8 @@
       <filter>
         <option name="logLevel" value="verbose" />
         <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="group" />
-        <option name="name" value="group" />
+        <option name="logTagPattern" value="syn1" />
+        <option name="name" value="syn" />
         <option name="pid" value="" />
       </filter>
     </filters>
@@ -49,7 +49,7 @@
     </option>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="group" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="syn" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5acbd94-28da-4709-9348-81dae1a8ebda" name="Default" comment="" />
@@ -61,9 +61,9 @@
     <file path="$PROJECT_DIR$/../../RainDropScreening-master/RainDropScreening-master/gen/com/raindrop/screening/BuildConfig.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375781955560" ignored="false" />
     <file path="/MainActivity.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375865757991" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376301982715" ignored="false" />
-    <file path="/fragment.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376276136773" ignored="false" />
-    <file path="/FirstActivity.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375858006229" ignored="false" />
-    <file path="/Dummy.txt" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376306043936" ignored="false" />
+    <file path="/fragment.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376377866355" ignored="false" />
+    <file path="/FirstActivity.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376384112925" ignored="false" />
+    <file path="/Dummy.txt" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376380058292" ignored="false" />
     <file path="$PROJECT_DIR$/../../cropImageTest/AndroidManifest.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375866659132" ignored="false" />
     <file path="$PROJECT_DIR$/../../cropImageTest/res/values/strings.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375866659132" ignored="false" />
     <file path="$PROJECT_DIR$/../../cropImageTest/res/layout/main.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1375866659637" ignored="false" />
@@ -78,6 +78,7 @@
     <file path="/activity_login.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376306684939" ignored="false" />
     <file path="/activity_first.xml" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376296491989" ignored="false" />
     <file path="/LoginActivity.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376306403578" ignored="false" />
+    <file path="/Constants.java" changelist="c5acbd94-28da-4709-9348-81dae1a8ebda" time="1376377533924" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +98,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -135,6 +134,24 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/FirstActivity.java" line="341" class="com.example.cameratest.FirstActivity$2$1" package="com.example.cameratest">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -148,27 +165,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/LoginActivity.java">
+      <file leaf-file-name="FirstActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/FirstActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="32" selection-start="5303" selection-end="5303" vertical-scroll-proportion="0.0">
+            <state line="373" column="54" selection-start="14668" selection-end="14668" vertical-scroll-proportion="0.60952383">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1601#1609#0" expanded="true" />
-                <element signature="e#5547#5713#0" expanded="true" />
-                <element signature="e#5702#5703#0" expanded="true" />
+                <element signature="e#12723#13963#0" expanded="true" />
+                <element signature="e#13944#13945#0" expanded="true" />
+                <element signature="e#13989#14218#0" expanded="true" />
+                <element signature="e#14199#14200#0" expanded="true" />
+                <element signature="e#14307#14692#0" expanded="true" />
+                <element signature="e#14681#14682#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_login.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_login.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="CreatCardActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CreatCardActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="22" selection-start="4577" selection-end="4577" vertical-scroll-proportion="0.8086957">
+            <state line="365" column="33" selection-start="14906" selection-end="14907" vertical-scroll-proportion="-9.92">
               <folding />
             </state>
           </provider>
@@ -184,21 +201,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CameraChild/src/com/example/camerachild/MainActivity.java" />
-        <option value="$PROJECT_DIR$/CameraChild/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/CameraTest/src/com/example/po/Card.java" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/Edit2Activity.java" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/MainActivity.java" />
-        <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CreatCardActivity.java" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/util/DBUtils.java" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/util/DataBaseHelper.java" />
-        <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/FirstActivity.java" />
         <option value="$PROJECT_DIR$/CameraTest/res/layout/activity_edit.xml" />
-        <option value="$PROJECT_DIR$/CameraTest/res/layout/activity_first.xml" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/loginActivity.java" />
-        <option value="$PROJECT_DIR$/CameraTest/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/LoginActivity.java" />
         <option value="$PROJECT_DIR$/CameraTest/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/CameraTest/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/CameraTest/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/CameraTest/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CoverCardActivity.java" />
+        <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CreatCardActivity.java" />
+        <option value="$PROJECT_DIR$/CameraTest/res/layout/activity_first.xml" />
+        <option value="$PROJECT_DIR$/CameraTest/src/com/example/util/Constants.java" />
+        <option value="$PROJECT_DIR$/CameraTest/src/com/example/cameratest/FirstActivity.java" />
       </list>
     </option>
   </component>
@@ -207,6 +225,22 @@
     <option name="y" value="-8" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -234,8 +268,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -277,10 +309,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="example" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -306,43 +334,64 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidMVP-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CameraTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="json.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.lastSelected" value="project.propCompiler" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RainDropScreening-master" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\libs" />
       <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\assets" />
       <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\res\drawable-hdpi" />
       <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\db" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\assets" />
+      <recent name="E:\GetHub\lixinlei\AndroidMVP-master\CameraTest\assets\test" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.CameraTest">
@@ -378,19 +427,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -416,6 +452,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -539,32 +588,52 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261934" sideWeight="0.88147295" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28151774" sideWeight="0.88147295" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3237454" sideWeight="0.96777904" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27879903" sideWeight="0.96777904" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.87341774" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24050634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.7721519" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11852704" sideWeight="0.3272059" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2347526" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2301496" sideWeight="0.32802936" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11852704" sideWeight="0.67218137" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2301496" sideWeight="0.6719706" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21542227" sideWeight="0.8147296" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15605876" sideWeight="0.85500574" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14499424" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15605876" sideWeight="0.7698504" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18066743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3739931" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -634,132 +703,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/drawable-hdpi/ic_add.png">
+    <entry file="file://$PROJECT_DIR$/CameraTest/assets/p1_24.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://C:/android-sdks/sources/android-16/android/content/ContextWrapper.java">
+    <entry file="file://$PROJECT_DIR$/CameraTest/assets/p1_23.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CameraTest/assets/selfcare.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="24" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.33333334">
+        <state line="150" column="48" selection-start="4645" selection-end="4645" vertical-scroll-proportion="1.0757315">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/drawable-hdpi/ic_stop_down.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/util/DataBaseHelper.java">
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/util/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="136" selection-start="3091" selection-end="3091" vertical-scroll-proportion="0.0">
+        <state line="13" column="5" selection-start="459" selection-end="459" vertical-scroll-proportion="0.44757435">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/drawable-hdpi/p1_11.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_camera2.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="10" column="58" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/util/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="41" selection-start="338" selection-end="338" vertical-scroll-proportion="0.4147105">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/util/GlobalUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="67" selection-start="3344" selection-end="3344" vertical-scroll-proportion="3.4773083">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_child.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/util/ListenerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="67" selection-start="871" selection-end="871" vertical-scroll-proportion="-0.8935837">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_edit.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/EditCardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="58" selection-start="1597" selection-end="1597" vertical-scroll-proportion="0.5164319">
+          <folding />
+        </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state line="26" column="51" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0">
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/EditActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="47" selection-start="972" selection-end="972" vertical-scroll-proportion="-2.374022">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/ChildActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="13" selection-start="1519" selection-end="1722" vertical-scroll-proportion="0.030598054">
+        <state line="41" column="46" selection-start="1106" selection-end="1106" vertical-scroll-proportion="-6.4710484">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/AndroidManifest.xml">
+    <entry file="file://C:/android-sdks/sources/android-16/android/util/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="81" selection-start="2030" selection-end="2030" vertical-scroll-proportion="0.46025103">
+        <state line="158" column="0" selection-start="5440" selection-end="5440" vertical-scroll-proportion="0.30203444">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_first.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CoverCardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="73" selection-start="747" selection-end="747" vertical-scroll-proportion="-0.6197183">
+          <folding />
+        </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state line="69" column="80" selection-start="449" selection-end="2445" vertical-scroll-proportion="0.0">
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/CameraTest/libs/umeng_sdk.jar!/com/umeng/analytics/MobclickAgent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="162" selection-end="162" vertical-scroll-proportion="0.18302828">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/CreatCardActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="332" column="108" selection-start="13682" selection-end="13682" vertical-scroll-proportion="0.51743376">
+        <state line="365" column="33" selection-start="14906" selection-end="14907" vertical-scroll-proportion="-9.92">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/FirstActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="390" column="79" selection-start="15189" selection-end="15189" vertical-scroll-proportion="0.7586705">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/src/com/example/cameratest/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="32" selection-start="5303" selection-end="5303" vertical-scroll-proportion="0.0">
+        <state line="373" column="54" selection-start="14668" selection-end="14668" vertical-scroll-proportion="0.60952383">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#1609#0" expanded="true" />
-            <element signature="e#5547#5713#0" expanded="true" />
-            <element signature="e#5702#5703#0" expanded="true" />
+            <element signature="e#12723#13963#0" expanded="true" />
+            <element signature="e#13944#13945#0" expanded="true" />
+            <element signature="e#13989#14218#0" expanded="true" />
+            <element signature="e#14199#14200#0" expanded="true" />
+            <element signature="e#14307#14692#0" expanded="true" />
+            <element signature="e#14681#14682#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CameraTest/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="22" selection-start="4577" selection-end="4577" vertical-scroll-proportion="0.8086957">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,6 +823,17 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -815,7 +880,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>CameraChild</last-edited>
+          <last-edited>CameraTest</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

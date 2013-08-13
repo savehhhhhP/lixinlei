@@ -41,17 +41,16 @@
                 android:name=".LoginActivity"
                 android:label="@string/title_activity_first"
                 android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <activity
                 android:name="com.example.cameratest.FirstActivity"
                 android:label="@string/title_activity_first"
                 android:screenOrientation="portrait">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
                 android:name="com.example.cameratest.EditActivity"

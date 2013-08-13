@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.HashMap;
 
 import android.app.Activity;
@@ -15,7 +14,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaRecorder;
@@ -83,7 +81,7 @@ public class CreatCardActivity extends Activity implements OnClickListener {
         Intent intent = getIntent();
         cardType = intent.getStringExtra("type");                                       //lxl 获得类型
         Log.i("lxl", "cardType is " + cardType);
-        setContentView(R.layout.activity_camera2);
+        setContentView(R.layout.activity_creatcard);
         preview = (ImageView) findViewById(R.id.uploadIV);
         preview.setOnClickListener(this);
 //        配置友盟发送数据的机制  在线同步策略

@@ -81,7 +81,7 @@ public class EditCardActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera2);
+        setContentView(R.layout.activity_creatcard);
         initUI();
         init();
 //      配置友盟发送数据的机制  在线同步策略

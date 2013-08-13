@@ -32,7 +32,7 @@ public class CoverCardActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_cover);
 
         Intent intent = getIntent();
         replacePosition = intent.getIntExtra("position", 0);

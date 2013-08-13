@@ -11,5 +11,6 @@ public class Constants {
 
     public static String TYPE_CARD = "card";
     public static String TYPE_CATEGORY = "category";
+   // public static String TYPE_SYN = "synchronism";
 
 }
