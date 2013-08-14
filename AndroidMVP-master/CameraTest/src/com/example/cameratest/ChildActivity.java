@@ -207,16 +207,14 @@ public class ChildActivity extends Activity {
         iv4 = (ImageView) findViewById(R.id.imageView4);
         iv5 = (ImageView) findViewById(R.id.imageView5);
         iv6 = (ImageView) findViewById(R.id.imageView6);
-        iv7 = (ImageView) findViewById(R.id.imageView7);
-        iv8 = (ImageView) findViewById(R.id.imageView8);
+
         ivList.add(iv1);
         ivList.add(iv2);
         ivList.add(iv3);
         ivList.add(iv4);
         ivList.add(iv5);
         ivList.add(iv6);
-        ivList.add(iv7);
-        ivList.add(iv8);
+
         Intent intent = getIntent();
         isLauchPage = intent.getBooleanExtra("isLauchPage", true);
         if (isLauchPage) {
@@ -239,16 +237,12 @@ public class ChildActivity extends Activity {
         tv4 = (TextView) findViewById(R.id.textView4);
         tv5 = (TextView) findViewById(R.id.textView5);
         tv6 = (TextView) findViewById(R.id.textView6);
-        tv7 = (TextView) findViewById(R.id.textView7);
-        tv8 = (TextView) findViewById(R.id.textView8);
         tvList.add(tv1);
         tvList.add(tv2);
         tvList.add(tv3);
         tvList.add(tv4);
         tvList.add(tv5);
         tvList.add(tv6);
-        tvList.add(tv7);
-        tvList.add(tv8);
     }
 
     @Override

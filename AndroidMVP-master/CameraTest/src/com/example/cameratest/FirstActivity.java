@@ -46,22 +46,19 @@ public class FirstActivity extends Activity {
     ImageView iv4;
     ImageView iv5;
     ImageView iv6;
-    ImageView iv7;
-    ImageView iv8;
+
     TextView tv1;
     TextView tv2;
     TextView tv3;
     TextView tv4;
     TextView tv5;
     TextView tv6;
-    TextView tv7;
-    TextView tv8;
     Map<Integer, Card> cardMap;
     DataBaseHelper myDbHelper;                                  //数据库
     String parent;
     int[] imageViews = new int[]{
             R.id.imageView1, R.id.imageView2, R.id.imageView3, R.id.imageView4,
-            R.id.imageView5, R.id.imageView6, R.id.imageView7, R.id.imageView8
+            R.id.imageView5, R.id.imageView6,
     };
     //	int [] image_id={ 0,0,0,0,0,0,0,0 };
 //	初始化  将各个节点均设置为  非目录节点 
@@ -487,16 +484,12 @@ public class FirstActivity extends Activity {
         iv4 = (ImageView) findViewById(R.id.imageView4);
         iv5 = (ImageView) findViewById(R.id.imageView5);
         iv6 = (ImageView) findViewById(R.id.imageView6);
-        iv7 = (ImageView) findViewById(R.id.imageView7);
-        iv8 = (ImageView) findViewById(R.id.imageView8);
         ivList.add(iv1);
         ivList.add(iv2);
         ivList.add(iv3);
         ivList.add(iv4);
         ivList.add(iv5);
         ivList.add(iv6);
-        ivList.add(iv7);
-        ivList.add(iv8);
         initTextView();                                                //初始化textView   完成tvList的成员添加
         Intent intent = getIntent();
         isLauchPage = intent.getBooleanExtra("isLauchPage", true);       //取得是否为目录节点的信息，并且做出不同操作
@@ -520,16 +513,12 @@ public class FirstActivity extends Activity {
         tv4 = (TextView) findViewById(R.id.textView4);
         tv5 = (TextView) findViewById(R.id.textView5);
         tv6 = (TextView) findViewById(R.id.textView6);
-        tv7 = (TextView) findViewById(R.id.textView7);
-        tv8 = (TextView) findViewById(R.id.textView8);
         tvList.add(tv1);
         tvList.add(tv2);
         tvList.add(tv3);
         tvList.add(tv4);
         tvList.add(tv5);
         tvList.add(tv6);
-        tvList.add(tv7);
-        tvList.add(tv8);
     }
 
     @Override
