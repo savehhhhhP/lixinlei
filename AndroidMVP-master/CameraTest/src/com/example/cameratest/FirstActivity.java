@@ -160,6 +160,7 @@ public class FirstActivity extends Activity {
                 } else {
                     ivList.get(position).setBackgroundResource(R.drawable.ic_card);
                 }
+
                 tvList.get(position).setText(cardItem.getName());                                  //lxl…Ë÷√Œƒ◊÷
             }
         }
@@ -367,7 +368,7 @@ public class FirstActivity extends Activity {
             public void run() {
                 try{
                     String synData;
-                    synData = getJsonString("http://115.28.35.182/manifest/:username");
+                    synData = getJsonString("http://api.sxd.xd.com/order/s12.qsky.com.cn_plt.json");
                     Log.i("syn1",synData);
                 }catch(Exception e){
                     Log.i("syn1",e.toString());
