@@ -63,20 +63,24 @@
         <item>web</item>
         <item>ios</item>
     </string-array>
+    <!--sex-->
     <string-array name="gender">
         <item>male</item>
         <item>female</item>
     </string-array>
+    <!--age-->
     <string-array name="age">
         <item>&gt;16</item>
         <item>16to30</item>
         <item>&lt;30</item>
     </string-array>
+    <!--relation-->
     <string-array name="relation">
         <item>父母</item>
         <item>亲戚</item>
         <item>老师</item>
     </string-array>
+    <!--operations-->
     <string-array name="operations">
         <item>重新开始</item>
         <item>用户反馈</item>

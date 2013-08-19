@@ -42,6 +42,7 @@ import com.umeng.fb.FeedbackAgent;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+    public final static String TAG = "MainActivity";
     MyApplication myapp;
     ImageButton imageBtnYes;
     ImageButton imageBtnNo;
@@ -138,15 +139,15 @@ public class MainActivity extends Activity implements OnClickListener {
     private void setNavigationBar() {
 
         navigationBar = (NavigationBar) findViewById(R.id.navigationBar1);
-        navigationBar.setTvTitle("M-CHAT表");
+        navigationBar.setTvTitle(getString(R.string.main_tittle));
         navigationBar.setBtnLeftVisble(false);
-        navigationBar.setBtnRightText("操作");
+        navigationBar.setBtnRightText(getString(R.string.right_btn_text));
         navigationBar.setBtnRightClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new Builder(MainActivity.this);
-                builder.setTitle("操作").setItems(R.array.operations, new DialogInterface.OnClickListener() {
+                builder.setTitle(getString(R.string.right_btn_msg_tittle)).setItems(R.array.operations, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
@@ -158,7 +159,7 @@ public class MainActivity extends Activity implements OnClickListener {
                                 startActivity(intent);
                                 finish();
                                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                                Toast.makeText(MainActivity.this, "题库初始化完成，请开始答题", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, getString(R.string.main_msg), Toast.LENGTH_SHORT).show();
                                 break;
                             case 1:
                                 agent.startFeedbackActivity();
@@ -178,7 +179,7 @@ public class MainActivity extends Activity implements OnClickListener {
                                 break;
                         }
                     }
-                }).setPositiveButton("取消", null).show();
+                }).setPositiveButton(getString(R.string.right_btn_msg_cancel), null).show();
 
             }
         });
@@ -261,10 +262,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 try {
                     Map<String, String> requestParams = new HashMap<String, String>();
                     requestParams.put("answer", json.toString());
-                    Log.i("sjl", "回答的结果" + json.toString());
                     String jsonstring = HttpUtil.postRequest("datacommit", requestParams);
                     Message me = new Message();
-                    Log.i("sjl", "服务器返回值：" + jsonstring);
                     me.obj = jsonstring;
                     myhandler.sendMessage(me);
                 } catch (Exception e) {
@@ -333,9 +332,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
         }
         if (!result) {
-            questionTv.setText(Html.fromHtml("测试结果：阳性 <br/> 孤独症高风险,请咨询相关工作人员<br/>需进一步电话随访,仍未通过者则需进一步评估"));
+            questionTv.setText(Html.fromHtml(getString(R.string.main_result_yang)));
         } else {
-            questionTv.setText("测试结果：非阳性");
+            questionTv.setText(getString(R.string.main_result_nyang));
         }
     }
 

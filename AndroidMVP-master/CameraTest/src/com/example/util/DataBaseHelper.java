@@ -308,6 +308,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * 更新操作
+     * @param sql 语句
+     */
+    public void updataTableData(String sql){
+        myDataBase = SQLiteDatabase.openDatabase(myPath, null,
+                SQLiteDatabase.OPEN_READWRITE);//打开数据库
+        myDataBase.execSQL(sql);
+
+    }
+
+    /**
+     * 查询操作
+     */
+    public String getFilename(String id){
+        String fileNmae=null;
+        String sql = "select filename from resources where id = ?";
+        myDataBase = SQLiteDatabase.openDatabase(myPath, null,
+                SQLiteDatabase.OPEN_READWRITE);//打开数据库
+        Cursor response = myDataBase.rawQuery(sql,new String[]{id});
+        if (response.moveToNext()) {
+            fileNmae =  response.getString(response.getColumnIndex("filename"));
+        }
+        return fileNmae;
+    }
+
+    /**
      * 从父节点查出子节点信息
      *
      * @param parent 父节点信息

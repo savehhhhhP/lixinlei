@@ -56,7 +56,7 @@ public class ChildActivity extends Activity {
     List<TextView> tvList;
     DataBaseHelper myDbHelper;
     Map<Integer, Card> cardMap;
-    int[] displayFlag = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+    int[] displayFlag = new int[]{0, 0, 0, 0, 0, 0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

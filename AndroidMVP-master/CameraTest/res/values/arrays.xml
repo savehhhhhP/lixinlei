@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name ="images">
+        <item>p1_11.jpg</item>
+        <item>p1_12.jpg</item>
+        <item>p1_21.jpg</item>
+        <item>p1_22.jpg</item>
+        <item>p1_23.jpg</item>
+        <item>p1_24.jpg</item>
+        <item>selfcare.gif</item>
+    </string-array>
+
+    <string-array name ="audios">
+        <item>s1_11.mp3</item>
+        <item>s1_12.mp3</item>
+        <item>s1_21.mp3</item>
+        <item>s1_22.mp3</item>
+        <item>s1_23.mp3</item>
+        <item>s1_24.mp3</item>
+    </string-array>
+</resources>

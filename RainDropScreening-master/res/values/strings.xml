@@ -18,4 +18,27 @@
     <string name="help_content">Introduction</string>
     <string name="introduction_content">2004年北京市针对2—6岁的普查情况，发病率为0.134%，按这个比例全国有180万自闭症儿童。按美国2012年的最新研究报告称1/88儿童受自
     </string>
+
+    <!--initQuestionTypeListview()-->
+    <string name="age">孩子的年龄(必填)</string>
+    <string name="relation">您和孩子的关系</string>
+    <string name="sex">孩子的性别</string>
+    <string name="start">开始答题</string>
+
+    <!--Navigationbar-->
+    <string name="head_tittle">请选择题库</string>
+    <string name="main_tittle">M-CHAT表</string>
+    <string name="right_btn_text">操作</string>
+    <string name="right_btn_msg_tittle">操作</string>
+    <string name="right_btn_msg_cancel">操作</string>
+
+    <!--begin chart-->
+    <string name="main_msg">题库初始化完成，请开始答题</string>
+    <string name="begin_msg">您需要选择孩子的年龄才能开始答题</string>
+    <string name="begin_msg_tittle">提示</string>
+    <string name="begin_msg_ok">确定</string>
+
+    <!--chat result-->
+    <string name="main_result_yang">测试结果：阳性 <br/> 孤独症高风险,请咨询相关工作人员<br/>需进一步电话随访,仍未通过者则需进一步评估</string>
+    <string name="main_result_nyang">测试结果：非阳性</string>
 </resources>

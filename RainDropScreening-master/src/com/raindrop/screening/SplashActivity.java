@@ -47,7 +47,7 @@ public class SplashActivity extends Activity {
         myNavigationbar = (NavigationBar) findViewById(R.id.helpNb);
         myNavigationbar.setBtnRightVisble(false);
         myNavigationbar.setBtnLeftVisble(false);
-        myNavigationbar.setTvTitle("请选择题库");
+        myNavigationbar.setTvTitle(getString(R.string.head_tittle));
     }
 
     @Override
@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
 //		题库A(适合0到16个月儿童)
 //		题库B(适合16到30个月儿童)
 //		题库C(适合2岁以上儿童)
-        final String[] adapterSource = new String[]{"孩子的年龄(必填)", "您和孩子的关系", "孩子的性别", "开始答题"};
+        final String[] adapterSource = new String[]{getString(R.string.age), getString(R.string.relation),getString(R.string.sex),getString(R.string.start)};
         final int[] dialogItemsID = {R.array.age, R.array.relation, R.array.gender};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, adapterSource);   //android自带的android.R.layout.simple_list_item_1
@@ -82,7 +82,7 @@ public class SplashActivity extends Activity {
 
                     if ("未填".equals(age)) {
                         AlertDialog.Builder builder = new Builder(SplashActivity.this);
-                        builder.setTitle("提示").setMessage("您需要选择孩子的年龄才能开始答题").setPositiveButton("确定", null).show();
+                        builder.setTitle(getString(R.string.begin_msg_tittle)).setMessage(getString(R.string.begin_msg)).setPositiveButton(getString(R.string.begin_msg_ok), null).show();
                     } else {
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         intent.putExtra("questionType", questionType);
@@ -100,7 +100,7 @@ public class SplashActivity extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String answer = getResources().getStringArray(dialogItemsID[arg2])[which];
-                            Log.i("sjl", "answer:" + answer);
+
                             switch (arg2) {
                                 case 0:                                //年龄
                                     questionType = which;

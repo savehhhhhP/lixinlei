@@ -10,4 +10,20 @@
     <string name="title_activity_edit2">Edit2Activity</string>
     <string name="title_activity_child">ChildActivity</string>
 
+    <string name="manifest_user">user</string>
+    <string name="manifest_id">id</string>
+    <string name="manifest_resources">resources</string>
+    <string name="manifest_timestamp">timestamp</string>
+
+    <string name="syn_get_sql">http://115.28.35.182/sql/public</string>
+    <string name="syn_get_manifest">http://115.28.35.182/manifest/public</string>
+
+    <string name="FirstActivity_syn_msg_error">同步未成功，请检查网络是否正常。</string>
+    <string name="FirstActivity_syn_msg_ok">同步成功结束，现在拥有最新资源！</string>
+
+    <string name="FirstActivity_msg_cover">长按替换</string>
+
+    <string name="firstParent">af35431e-cdea-4d66-b32f-57bf683a25ce</string>
+
+
 </resources>

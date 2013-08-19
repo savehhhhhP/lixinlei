@@ -1,8 +1,6 @@
 package com.example.cameratest;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +16,9 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -31,13 +32,12 @@ import com.example.customview.NavigationBar;
 import com.example.po.Card;
 import com.example.util.Constants;
 import com.example.util.DataBaseHelper;
+import com.example.util.DataSyn;
 import com.example.util.GlobalUtil;
 import com.umeng.analytics.MobclickAgent;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class FirstActivity extends Activity {
+    public static final  String TAG = "FirstActivity";
 
     NavigationBar nb;                                            //导航条
     ImageView iv1;
@@ -56,14 +56,9 @@ public class FirstActivity extends Activity {
     Map<Integer, Card> cardMap;
     DataBaseHelper myDbHelper;                                  //数据库
     String parent;
-    int[] imageViews = new int[]{
-            R.id.imageView1, R.id.imageView2, R.id.imageView3, R.id.imageView4,
-            R.id.imageView5, R.id.imageView6,
-    };
-    //	int [] image_id={ 0,0,0,0,0,0,0,0 };
-//	初始化  将各个节点均设置为  非目录节点 
-//	String [] item_type={ Constants.TYPE_CARD,Constants.TYPE_CARD,Constants.TYPE_CARD,Constants.TYPE_CARD
-//			,Constants.TYPE_CARD,Constants.TYPE_CARD,Constants.TYPE_CARD,Constants.TYPE_CARD};
+
+    MyHandler myHandler;
+
     List<ImageView> ivList;
     List<TextView> tvList;
 
@@ -83,9 +78,10 @@ public class FirstActivity extends Activity {
     }
 
     public void init() {
+        myHandler = new MyHandler();
         sp = getSharedPreferences("xiaoyudi", 0);
         firstTime = sp.getBoolean("firstTime", true);
-        Log.i("lxl", "是不是第一次启动" + firstTime);
+        Log.i(TAG, "是不是第一次启动" + firstTime);
     }
 
     @Override
@@ -107,21 +103,21 @@ public class FirstActivity extends Activity {
             File dir_PIC = new File(Constants.dir_path_pic);
             if (!dir_YY.exists()) {
                 dir_YY.mkdirs();                                       //lxl 在存在的目录中创建文件夹  YY-声音
-                Log.i("lxl", "正在初始化  YY 路径问题");
             }
             if (!dir_PIC.exists()) {
                 dir_PIC.mkdirs();                                      //PIC 图片
-                Log.i("lxl", "正在初始化 PIC 路径问题");
             }
-            Log.i("lxl", "路径初始化成功");
+            Log.i(TAG, "路径初始化成功");
         }
     }
 
-    String[] images = new String[]{"p1_11.jpg", "p1_12.jpg", "p1_21.jpg", "p1_22.jpg", "p1_23.jpg", "p1_24.jpg", "selfcare.gif"};
-    String[] audios = new String[]{"s1_11.mp3", "s1_12.mp3", "s1_21.mp3", "s1_22.mp3", "s1_23.mp3", "s1_24.mp3"};
+    String[] images ;
+    String[] audios ;
 
     public void initCards() {
 //     应用第一次启动的时候  初始化数据库
+        images = this.getResources().getStringArray(R.array.images);
+        audios = this.getResources().getStringArray(R.array.audios);
         try {
             String path_image = GlobalUtil.getExternalAbsolutePath(this) + "/" + "XIAOYUDI" + "/PIC/";
             String path_audio = GlobalUtil.getExternalAbsolutePath(this) + "/" + "XIAOYUDI" + "/YY/";
@@ -139,16 +135,16 @@ public class FirstActivity extends Activity {
 //			ivList.get(i).setBackgroundResource(R.drawable.ic_add);
         }
 //		end by 2013 07 31
-        Log.i("lxl", "parent id is :" + parent);
+        Log.i(TAG, "parent id is :" + parent);
         if (cardMap != null) {
-            Log.i("lxl", "cardlist.size is " + cardMap.size());
+            Log.i(TAG, "cardlist.size is " + cardMap.size());
 
             Iterator it = cardMap.keySet().iterator();
             while (it.hasNext()) {
                 Integer key = (Integer) it.next();
                 Card cardItem = cardMap.get(key);
                 int position = cardItem.getPosition();
-                Log.i("lxl", "正在初始化页面的各个ITEM cardItem.getImage_filename():" + cardItem.getImage_filename());
+                Log.i(TAG, "正在初始化页面的各个ITEM cardItem.getImage_filename():" + cardItem.getImage_filename());
                 Bitmap mybitmap = GlobalUtil.preHandleImage(null, Constants.dir_path_pic + cardItem.getImage_filename());    //获得图片到 bitmap 之后放到imageViewList  ，循环结束后所有imageView都有图片
                 ivList.get(position).setImageBitmap(mybitmap);
 
@@ -157,7 +153,6 @@ public class FirstActivity extends Activity {
                 } else {
                     ivList.get(position).setBackgroundResource(R.drawable.ic_card);
                 }
-
                 tvList.get(position).setText(cardItem.getName());                                  //lxl设置文字
             }
         }
@@ -167,15 +162,15 @@ public class FirstActivity extends Activity {
 
     public void copyAssets(String[] resources, String path) throws IOException {
 
-        Log.i("lxl", "正在复制资源 声音和图片资源");
-        Log.i("lxl", "resources.length:" + resources.length);
+        Log.i(TAG, "正在复制资源 声音和图片资源");
+        Log.i(TAG, "resources.length:" + resources.length);
         for (int i = 0; i < resources.length; i++) {
             String outFileName = path + resources[i];
             File file = new File(outFileName);
-            Log.i("lxl", "-----outFileName：" + outFileName);
+            Log.i(TAG, "-----outFileName：" + outFileName);
             if (!file.exists()) {
                 InputStream myInput = getAssets().open(resources[i]);
-                Log.i("lxl", "-----复制资源：" + outFileName);
+                Log.i(TAG, "-----复制资源：" + outFileName);
                 OutputStream myOutput = new FileOutputStream(outFileName);
                 byte[] buffer = new byte[1024];
                 int length;
@@ -185,7 +180,7 @@ public class FirstActivity extends Activity {
                 myOutput.flush();
                 myOutput.close();
                 myInput.close();
-                Log.i("lxl", "资源文件初始化完成");
+                Log.i(TAG, "资源文件初始化完成");
             }
         }
     }
@@ -223,12 +218,10 @@ public class FirstActivity extends Activity {
             if (!isLauchPage && position == 0) {                                                //position ==0？
                 finish();
             } else {
-//				if(position<cardMap.size()){
                 Card cardItem = cardMap.get(position);
-//					此处避免了 一种情况   比如： cardMap的size是 3  但是点击的位置是2 这符合第一个判断  但是 实际上的这个位置是空的   
+//					此处避免了 一种情况   比如： cardMap的size是 3  但是点击的位置是2 这符合第一个判断  但是 实际上的这个位置是空的
                 if (cardItem != null) {
                     if (Constants.TYPE_CATEGORY.equals(cardMap.get(position).getType())) {
-                        Log.i("lxl", "正在进入下 一级界面");
                         Intent intent = new Intent();
                         intent.putExtra("isLauchPage", false);
                         intent.putExtra("name", cardMap.get(position).getName());
@@ -236,10 +229,10 @@ public class FirstActivity extends Activity {
                         intent.setClass(FirstActivity.this, FirstActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(FirstActivity.this, "长按替换", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FirstActivity.this, getString(R.string.FirstActivity_msg_cover), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(FirstActivity.this, "长按替换", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FirstActivity.this, getString(R.string.FirstActivity_msg_cover), Toast.LENGTH_SHORT).show();
                 }
             }
 //			}
@@ -255,8 +248,8 @@ public class FirstActivity extends Activity {
 
         @Override
         public boolean onLongClick(View v) {
-//			需要在这传给第二个界面  当前页面已经有的布局 就不要给用户机会重复选择了.. by lxl 2013 0726
-            Log.i("lxl", "点击事件得到的position:" + intent.getIntExtra("position", 0));
+//			需要在这传给第二个界面  当前页面已经有的布局 就不要给用户机会重复选择了.. by sjl 2013 0726
+            Log.i(TAG, "点击事件得到的position:" + intent.getIntExtra("position", 0));
             startActivityForResult(intent, 10);
             return false;
         }
@@ -283,18 +276,15 @@ public class FirstActivity extends Activity {
                 cardMap.put(position, card);
                 String filename = myDbHelper.queryFilename(image);
 //				begin 正在修改  选取图片引起的oom错误   by sjl 2013 07 31
-//				File picFile = new File(Constants.dir_path_pic, filename);
-//		    	Uri uri=Uri.fromFile(picFile);
-//				ivList.get(position).setImageURI(uri);
                 Bitmap mybitmap = GlobalUtil.preHandleImage(ivList.get(position), Constants.dir_path_pic + filename);
                 mybitmap = GlobalUtil.small(mybitmap);                        //lxl对选择的图片进行缩放之后放到所选择的要替换的图片（）上
-                Log.i("lxl", "缩放了...");
+                Log.i(TAG, "缩放了...");
                 ivList.get(position).setImageBitmap(mybitmap);
                 mybitmap.recycle();
                 mybitmap = null;
 
 //				end
-                Log.i("lxl", "正在渲染图片.." + position);
+                Log.i(TAG, "正在渲染图片.." + position);
                 if (type.equals(Constants.TYPE_CATEGORY)) {
                     ivList.get(position).setBackgroundResource(R.drawable.ic_category);
                 } else {
@@ -303,7 +293,7 @@ public class FirstActivity extends Activity {
 //				picFile=null;
 //				uri=null;
                 tvList.get(position).setText(name);
-                Log.i("lxl", "长按添加  返回到原页面   正在渲染 图片cardname:" + name);
+                Log.i(TAG, "长按添加  返回到原页面   正在渲染 图片cardname:" + name);
             }
         }
     }
@@ -337,10 +327,45 @@ public class FirstActivity extends Activity {
                             case 2:
                                 //intent.putExtra("type",Constants.TYPE_SYN);
                                 //begin此处实现同步功能 2013 8 13
-                                Log.i("syn1","begin");
-                                goSyn();
+                                DataSyn.getdb(myDbHelper);
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try{
+                                            String synData;
+                                            synData = DataSyn.getJsonString(Constants.GET_SQL);        //此处获得了SQL数据
+                                            DataSyn.formatSql(synData);                                //更新数据表
+                                            String mainifestData = DataSyn.getJsonString(Constants.GET_MAINIFEST); //获得mainfest数据
+                                            Map<String,String> mapMain = DataSyn.getMainifest(mainifestData);     //解析mainfest数据
+                                            int i=0;
+                                            DataSyn.getResourceString(Constants.GET_FILE_PATH+mapMain.get("id_0"),myDbHelper.getFilename(mapMain.get("id_0")),Constants.dir_path_pic);
+                                            DataSyn.getResourceString(Constants.GET_FILE_PATH+mapMain.get("id_1"),myDbHelper.getFilename(mapMain.get("id_1")),Constants.dir_path_yy);
+
+                                            Message msg = new Message();
+                                            Bundle b = new Bundle();//存放数据
+                                            b.putString("msg", getString(R.string.FirstActivity_syn_msg_ok));
+                                            msg.setData(b);
+                                            FirstActivity.this.myHandler.sendMessage(msg);
+
+                                        }catch(Exception e){
+                                            Log.i("syn1",e.toString()  + "error");
+                                            Message msg = new Message();
+                                            Bundle b = new Bundle();//存放数据
+                                            b.putString("msg", getString(R.string.FirstActivity_syn_msg_error));
+                                            msg.setData(b);
+                                            FirstActivity.this.myHandler.sendMessage(msg);
+                                        }
+                                    }
+                                }).start();
+
+
+//                                try{
+//                                    DataSyn.goSyn(myDbHelper);
+//                                }catch (Exception e){
+//                                    Toast.makeText(FirstActivity.this,getString(R.string.FirstActivity_syn_msg),Toast.LENGTH_SHORT).show();
+//                                }
                                 return;
-                                //end
+                                //end  8 16
                             default:
                                 break;
                         }
@@ -355,68 +380,10 @@ public class FirstActivity extends Activity {
                         dialog.dismiss();
                     }
                 }).show();
+
             }
         });
     }
-
-    private void goSyn() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    String synData;
-                    synData = getJsonString("http://api.sxd.xd.com/order/s12.qsky.com.cn_plt.json");
-                    Log.i("syn1",synData);
-                }catch(Exception e){
-                    Log.i("syn1",e.toString());
-                }
-            }
-        }).start();
-    }
-
-    /**
-     * 获取Json数据
-     * @param urlPath  路径
-     * @return Json数据
-     * @throws Exception
-     */
-    protected String getJsonString(String urlPath) throws Exception {
-        URL url = new URL(urlPath);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.connect();
-        InputStream inputStream = connection.getInputStream();
-        //对应的字符编码转换
-        Reader reader = new InputStreamReader(inputStream, "UTF-8");
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        String str = null;
-        StringBuffer sb = new StringBuffer();
-        while ((str = bufferedReader.readLine()) != null) {
-            sb.append(str);
-        }
-        reader.close();
-        connection.disconnect();
-        return sb.toString();
-    }
-
-    /*
-     * Jason数据解析
-     * @param jsonStr Json数据
-     * @throws Exception
-     */
-    /*
-    public void jsonToObj(String jsonStr) throws Exception {
-        Page page;
-        page = new Page();
-        JSONObject jsonObject = new JSONObject(jsonStr);
-        String fatherName = jsonObject.getString("FatherName");
-        JSONArray childs= jsonObject.getJSONArray("Childs");
-        int length = childs.length();
-        for (int i = 0; i < length; i++) {
-            jsonObject = items.getJSONObject(i);
-            String childName = jsonObject.getString("Name");
-        }
-    }          */
-
 
     public void initNavigationBar2(String name) {                                       //对导航栏的初始化——按钮的设置，背景图片，名称
         nb.setTvTitle(name);
@@ -445,7 +412,7 @@ public class FirstActivity extends Activity {
 //			Cursor c = db.rawQuery("SELECT * FROM card WHERE parent_id = ?", new String[]{parent+""});
 //			if(c!=null){
 //				while (c.moveToNext()) {
-//					Log.i("lxl", "1");
+//					Log.i(TAG, "1");
 //					int id = c.getInt(c.getColumnIndex("_id"));  
 //					String cardname = c.getString(c.getColumnIndex("cardname"));  
 //					String pic= c.getString(c.getColumnIndex("pic"));  
@@ -467,7 +434,7 @@ public class FirstActivity extends Activity {
 //					
 //					picFile=null;
 //					uri=null;
-//					Log.i("lxl", "初始化 页面  name=>" + cardname + ", picindex=>" + pic + ", yyindex=>" + yy+"type:"+type);
+//					Log.i(TAG, "初始化 页面  name=>" + cardname + ", picindex=>" + pic + ", yyindex=>" + yy+"type:"+type);
 //				}  
 //			}
 //	}
@@ -496,7 +463,7 @@ public class FirstActivity extends Activity {
         if (isLauchPage) {
             initNavigationBar();
 //			初始化  首页父节点   应该动态从数据库读取  有待完善 
-            parent = "af35431e-cdea-4d66-b32f-57bf683a25ce";
+            parent = getString(R.string.firstParent);
         } else {
             iv1.setImageResource(R.drawable.ic_return);
             tv1.setText("返回");
@@ -526,6 +493,37 @@ public class FirstActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_first, menu);
         return true;
+    }
+
+    class MyHandler extends Handler {
+
+        public MyHandler() {
+
+        }
+
+        public MyHandler(Looper L) {
+
+            super(L);
+
+        }
+
+        //子类必须重写此方法,接受数据
+
+        @Override
+
+        public void handleMessage(Message msg) {
+
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+
+            //此处可以更新UI
+
+            Bundle b = msg.getData();
+
+            String error = b.getString("msg");
+            Toast.makeText(FirstActivity.this,error,Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

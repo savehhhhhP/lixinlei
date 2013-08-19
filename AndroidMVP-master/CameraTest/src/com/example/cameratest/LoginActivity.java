@@ -37,7 +37,6 @@ public class LoginActivity extends Activity {
          //btnLogin
         initUI();
         initNavigationBar();
-        initExpandableListView();
     }
     List<String> group;           //组列表
     List<List<String>> child;     //子列表
@@ -67,109 +66,27 @@ public class LoginActivity extends Activity {
     }
 
 
-    private void initExpandableListView() {
-        initializeData();
-        final ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
-            //-----------------Child----------------//
-            @Override
-            public Object getChild(int groupPosition, int childPosition) {
-                return child.get(groupPosition).get(childPosition);
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return childPosition;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return child.get(groupPosition).size();
-            }
-
-            @Override
-            public View getChildView(int groupPosition, int childPosition,
-                                     boolean isLastChild, View convertView, ViewGroup parent) {
-                String string = child.get(groupPosition).get(childPosition);
-                return getGenericView(string);
-            }
-
-            //----------------Group----------------//
-            @Override
-            public Object getGroup(int groupPosition) {
-                return group.get(groupPosition);
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return groupPosition;
-            }
-
-            @Override
-            public int getGroupCount() {
-                return group.size();
-            }
-
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded,
-                                     View convertView, ViewGroup parent) {
-                String string = group.get(groupPosition);
-                return getGenericView(string);
-            }
-
-            //创建组/子视图
-            public TextView getGenericView(String s) {
-                // Layout parameters for the ExpandableListView
-                AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                        ViewGroup.LayoutParams.FILL_PARENT, 40);
-
-                TextView text = new TextView(LoginActivity.this);
-                text.setLayoutParams(lp);
-                // Center the text vertically
-                text.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-                // Set the text starting position
-                text.setPadding(36, 0, 0, 0);
-
-                text.setText(s);
-                return text;
-            }
-            @Override
-            public boolean hasStableIds() {
-                // TODO Auto-generated method stub
-                return false;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition, int childPosition) {
-                // TODO Auto-generated method stub
-                return true;
-            }
-        };
-
-        exlist.setAdapter(adapter);
-        exlist.setCacheColorHint(0);  //设置拖动列表的时候防止出现黑色背景
-    }
-
-
     Intent intent;
     RadioButton newUser;
     RadioButton oldUser;
+    //newUserName
+    EditText textNewUser;
+    EditText textOldUser;
+    Spinner spOldUser;
+    RadioGroup rdGroup;
     LinearLayout ll;
     private void initUI() {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         nbar = (NavigationBar)findViewById(R.id.navigationBar_Login);
-        exlist =(ExpandableListView)findViewById(R.id.expandableListView);
-        ll = (LinearLayout)findViewById(R.id.lLayout);
-        /*尝试添加到Group  失败
-        Log.i("group","group before");
-        RadioGroup rGroup;
-        rGroup = new RadioGroup(this);
         newUser =(RadioButton)findViewById(R.id.rbNewUser);
         oldUser =(RadioButton)findViewById(R.id.rbOldUser);
-        rGroup.addView(newUser);
-        rGroup.addView(oldUser);
-        ll.addView(rGroup);
-        Log.i("group","group after");
-        */
+        rdGroup = (RadioGroup)findViewById(R.id.radioGroup);
+        spOldUser =(Spinner)findViewById(R.id.spOldUserName);
+        textNewUser = (EditText)findViewById(R.id.newUserName);
+        textOldUser = (EditText)findViewById(R.id.oldUserName);
+        setGroupListener(rdGroup);
+        ll = (LinearLayout)findViewById(R.id.lLayout);
+
         intent = new Intent();
         intent.setClass(LoginActivity.this, FirstActivity.class);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +95,23 @@ public class LoginActivity extends Activity {
                 startActivityForResult(intent,0);
             }
         });
+    }
+    private void setGroupListener(RadioGroup rd){
+         rd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+             @Override
+             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                 if(checkedId == R.id.rbNewUser){                  //点击了新用户
+                     spOldUser.setEnabled(false);
+                     textOldUser.setEnabled(false);
+                     textNewUser.setEnabled(true);
+                 }else{                                            //点击了老用户
+                     spOldUser.setEnabled(true);
+                     textOldUser.setEnabled(true);
+                     textNewUser.setEnabled(false);
+                 }
+             }
+         });
+
     }
     public void initNavigationBar() {
         nbar.setTvTitle("小雨滴");

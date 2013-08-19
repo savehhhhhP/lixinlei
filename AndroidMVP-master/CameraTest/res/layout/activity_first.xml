@@ -29,7 +29,7 @@
                       android:text="点击添加"
                       android:layout_alignBottom="@+id/imageView1"
                       android:textSize="@dimen/firstSize"
-                      android:textColor="@color/firstText"/>
+                      android:textColor="@color/firstText" android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
         <RelativeLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
                         android:id="@+id/relativeLayout6" android:layout_margin="@dimen/rlayoutMargin">
@@ -39,7 +39,8 @@
             <TextView android:id="@+id/textView2" android:layout_width="fill_parent"
                       android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_horizontal"
                       android:text="点击添加" android:layout_alignBottom="@+id/imageView2"
-                      android:textColor="@color/firstText" android:textSize="@dimen/firstSize"/>
+                      android:textColor="@color/firstText" android:textSize="@dimen/firstSize"
+                      android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -53,7 +54,8 @@
             <TextView android:id="@+id/textView3" android:layout_width="fill_parent"
                       android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_horizontal"
                       android:text="点击添加" android:layout_alignBottom="@+id/imageView3"
-                      android:textSize="@dimen/firstSize" android:textColor="@color/firstText"/>
+                      android:textSize="@dimen/firstSize" android:textColor="@color/firstText"
+                      android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
         <RelativeLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
                         android:id="@+id/relativeLayout4" android:layout_margin="@dimen/rlayoutMargin">
@@ -63,7 +65,8 @@
             <TextView android:id="@+id/textView4" android:layout_width="fill_parent"
                       android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_horizontal"
                       android:text="点击添加" android:layout_alignBottom="@+id/imageView4"
-                      android:textColor="@color/firstText" android:textSize="@dimen/firstSize"/>
+                      android:textColor="@color/firstText" android:textSize="@dimen/firstSize"
+                      android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -92,7 +95,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="点击添加" android:layout_alignBottom="@+id/imageView5"
-                    android:textSize="@dimen/firstSize" android:textColor="@color/firstText"/>
+                    android:textSize="@dimen/firstSize" android:textColor="@color/firstText"
+                    android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
         <RelativeLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
                         android:id="@+id/relativeLayout1" android:layout_margin="@dimen/rlayoutMargin">
@@ -113,7 +117,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="点击添加" android:layout_alignBottom="@+id/imageView6"
-                    android:textColor="@color/firstText" android:textSize="@dimen/firstSize"/>
+                    android:textColor="@color/firstText" android:textSize="@dimen/firstSize"
+                    android:layout_marginBottom="@dimen/textBottomMargin"/>
         </RelativeLayout>
     </LinearLayout>
 
